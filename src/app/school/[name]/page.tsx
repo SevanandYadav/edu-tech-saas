@@ -3,13 +3,14 @@ import SchoolDashboard from '@/components/SchoolDashboard';
 import { notFound } from 'next/navigation';
 
 interface SchoolPageProps {
-  params: {
+  params: Promise<{
     name: string;
-  };
+  }>;
 }
 
-export default function SchoolPage({ params }: SchoolPageProps) {
-  const school = getSchoolByName(params.name);
+export default async function SchoolPage({ params }: SchoolPageProps) {
+  const { name } = await params;
+  const school = getSchoolByName(name);
   
   if (!school) {
     notFound();
