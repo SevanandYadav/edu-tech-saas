@@ -1,0 +1,123 @@
+/* ========================================
+   IMPORTS
+   ======================================== */
+@import "tailwindcss";
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 8%;
+  }
+  
+  .carousel-indicators {
+    bottom: -30px;
+  }
+  
+  .modal-dialog {
+    margin: 10px;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .btn {
+    font-size: 0.875rem;
+  }
+  
+  .dropdown-menu {
+    font-size: 0.875rem;
+  }
+  
+  .table-responsive {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .container-fluid {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* ========================================
+   CSS VARIABLES & THEME CONFIGURATION
+   ======================================== */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Dark mode theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ========================================
+   DEVELOPMENT ENVIRONMENT OVERRIDES
+   ======================================== */
+
+/* Next.js Development Indicators */
+#__next-build-watcher,
+.__next-build-watcher,
+[data-nextjs-dialog-overlay],
+[data-nextjs-toast],
+[data-nextjs-scroll-focus-boundary],
+.__next-dev-overlay,
+#__next-dev-overlay {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Turbopack & Development Tools */
+div[style*="position: fixed"][style*="bottom"],
+div[style*="position: fixed"][style*="left: 10px"],
+div[style*="z-index: 9000"],
+[data-turbo],
+[data-nextjs] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Generic Development Overlays */
+body > div[style*="position: fixed"]:not([class]):not([id]) {
+  display: none !important;
+}
+
+/* Specific Development Element Targeting */
+*[style*="position: fixed"][style*="z-index: 9000"],
+*[style*="position: fixed"][style*="bottom: 10px"] {
+  display: none !important;
+}

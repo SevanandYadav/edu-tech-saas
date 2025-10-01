@@ -34,3 +34,22 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# uploaded files
+/public/*/
+!/public/jj-english-medium-school/Interschool_Competition.png
+!/public/jj-english-medium-school/Science_Project.png
+
+# logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+
+# cache
+.cache/
+.parcel-cache/
