@@ -1,15 +1,16 @@
-import { notFound } from 'next/navigation';
-import { getSchoolByName } from '@/lib/schools';
+import { getAllSchools, getSchoolByName } from '@/lib/schools';
 import SchoolDashboard from '@/components/SchoolDashboard';
+import { notFound } from 'next/navigation';
 
-interface PageProps {
-  params: Promise<{ name: string }>;
+interface SchoolPageProps {
+  params: {
+    name: string;
+  };
 }
 
-export default async function SchoolPage({ params }: PageProps) {
-  const { name } = await params;
-  const school = getSchoolByName(name);
-
+export default function SchoolPage({ params }: SchoolPageProps) {
+  const school = getSchoolByName(params.name);
+  
   if (!school) {
     notFound();
   }
@@ -17,9 +18,9 @@ export default async function SchoolPage({ params }: PageProps) {
   return <SchoolDashboard school={school} />;
 }
 
-export async function generateStaticParams() {
-  return [
-    { name: 'jj-english-medium-school-pune' },
-    { name: 'demo-school-mumbai' }
-  ];
+export function generateStaticParams() {
+  const schools = getAllSchools();
+  return schools.map((school) => ({
+    name: school.name,
+  }));
 }

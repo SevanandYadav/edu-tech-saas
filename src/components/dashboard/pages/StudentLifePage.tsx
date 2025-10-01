@@ -23,24 +23,10 @@ export default function StudentLifePage({ uploadedPhotos = [], school }: Student
 
   const [allPhotos, setAllPhotos] = useState(defaultPhotos);
 
+  // Load default photos only for static site
   useEffect(() => {
-    const loadExistingPhotos = async () => {
-      if (!school?.slug) return;
-      try {
-        console.log('Loading photos for school:', school.slug);
-        const response = await fetch(`/api/photos/${school.slug}`);
-        const data = await response.json();
-        console.log('API response:', data);
-        if (data.photos && data.photos.length > 0) {
-          console.log('Setting photos:', [...data.photos, ...defaultPhotos]);
-          setAllPhotos([...data.photos, ...defaultPhotos]);
-        }
-      } catch (error) {
-        console.log('Error loading photos:', error);
-      }
-    };
-    loadExistingPhotos();
-  }, [school?.slug]);
+    setAllPhotos(defaultPhotos);
+  }, []);
 
   useEffect(() => {
     if (uploadedPhotos.length > 0) {

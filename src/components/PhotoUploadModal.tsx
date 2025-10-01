@@ -39,26 +39,17 @@ export default function PhotoUploadModal({ show, onHide, schoolSlug, onUploadSuc
       
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('schoolSlug', schoolSlug || 'default-school');
-        formData.append('title', title || file.name);
-        formData.append('description', description);
-
-        console.log('Uploading with schoolSlug:', schoolSlug);
         setProgress((i / files.length) * 50);
 
-        const response = await fetch('/api/upload', {
-          method: 'POST',
-          body: formData,
+        // Simulate upload for static site
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        const photoUrl = URL.createObjectURL(file);
+        uploadedPhotos.push({
+          img: photoUrl,
+          title: title || file.name.replace(/\.[^/.]+$/, ""),
+          desc: description || 'Uploaded photo'
         });
-
-        if (!response.ok) {
-          throw new Error('Upload failed');
-        }
-
-        const result = await response.json();
-        uploadedPhotos.push(result.photo);
         
         setProgress(((i + 1) / files.length) * 100);
       }

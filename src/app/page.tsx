@@ -14,11 +14,7 @@ function HomeContent() {
   const { language, changeLanguage, t } = useLanguage();
 
   const handleSchoolSelect = (name: string) => {
-    if (window.location.hostname === 'localhost') {
-      window.location.href = `http://${name}.localhost:3000`;
-    } else {
-      window.location.href = `https://${name}.vercel.app`;
-    }
+    router.push(`/school/${name}`);
   };
 
   return (
