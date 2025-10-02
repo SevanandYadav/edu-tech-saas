@@ -76,7 +76,7 @@ export default function DashboardSidebar({ school }: DashboardSidebarProps) {
   };
 
   return (
-    <Col lg={3} className="bg-white shadow-sm p-4">
+    <div className="bg-white shadow-sm p-3 p-md-4 h-100">
       <div className="mb-4">
         <h5 className="fw-bold text-dark mb-3">
           <span className="me-2">📰</span>
@@ -125,6 +125,6 @@ export default function DashboardSidebar({ school }: DashboardSidebarProps) {
           <small className="text-muted fw-medium">{content.principalName}</small>
         </Card.Body>
       </Card>
-    </Col>
+    </div>
   );
 }

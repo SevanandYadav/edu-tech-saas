@@ -83,10 +83,15 @@ export default function UserMenu({ school, onPhotosUploaded }: UserMenuProps) {
     <Dropdown>
       <Dropdown.Toggle 
         variant="success" 
-        className="fw-semibold px-4 py-2 shadow-sm"
+        size="sm"
+        className="fw-semibold px-1 py-1 d-flex align-items-center justify-content-center text-white"
+        style={{ width: '60px', height: '32px', fontSize: '0.75rem', whiteSpace: 'nowrap', overflow: 'hidden', minWidth: '60px', maxWidth: '60px' }}
+        bsPrefix="btn"
       >
-        <i className={`${getRoleIcon()} me-2`}></i>
-        {user.displayName}
+        <span className="d-flex align-items-center text-white">
+          <i className={`${getRoleIcon()} me-1 text-white`} style={{ fontSize: '0.7rem' }}></i>
+          <span className="text-truncate text-white">{user.displayName}</span>
+        </span>
       </Dropdown.Toggle>
       <Dropdown.Menu className="shadow-lg border-0 mt-2" style={{ minWidth: '200px' }}>
         <Dropdown.Header className="text-muted small fw-bold">

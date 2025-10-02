@@ -31,7 +31,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     setUser({
       username,
       role: roleMap[role] || 'student',
-      displayName: `Demo ${role.split(' ')[0]}`
+      displayName: 'Demo'
     });
   };
 

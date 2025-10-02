@@ -38,13 +38,15 @@ export default function SchoolDashboard({ school }: SchoolDashboardProps) {
           />
           <Container fluid>
             <Row>
-              <DashboardSidebar school={school} />
               <Col lg={9} className="p-2 p-md-4">
                 <DashboardContent 
                   school={school} 
                   activeMenu={activeMenu} 
                   uploadedPhotos={uploadedPhotos}
                 />
+              </Col>
+              <Col lg={3} className="mt-3 mt-lg-0">
+                <DashboardSidebar school={school} />
               </Col>
             </Row>
           </Container>
