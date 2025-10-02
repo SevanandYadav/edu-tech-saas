@@ -11,36 +11,76 @@ interface HomePageProps {
 export default function HomePage({ school }: HomePageProps) {
   const { t } = useLanguage();
 
-  const events = [
-    { date: '15 Dec', title: 'Annual Sports Day', desc: 'Inter-house sports competition for all grades' },
-    { date: '20 Dec', title: 'Science Exhibition', desc: 'Students showcase innovative science projects' },
-    { date: '25 Dec', title: 'Christmas Celebration', desc: 'Festive celebration with cultural programs' },
-    { date: '30 Dec', title: 'Winter Break Begins', desc: 'School closes for winter vacation' }
-  ];
-
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Sarah Johnson',
-      role: 'Mathematics Teacher',
-      text: 'The digital platform has transformed how I teach. Students are more engaged and I can track their progress effectively.',
-      rating: 5
-    },
-    {
-      id: 2,
-      name: 'Rahul Sharma',
-      role: 'Grade 10 Student',
-      text: 'Online classes are amazing! I can access all my study materials anytime and the teachers are always available for help.',
-      rating: 5
-    },
-    {
-      id: 3,
-      name: 'Mrs. Priya Patel',
-      role: 'Parent',
-      text: 'I love being able to track my child\'s progress and communicate with teachers easily. The portal keeps me informed about everything.',
-      rating: 4
+  const getSchoolContent = () => {
+    if (school?.slug === 'jj') {
+      return {
+        events: [
+          { date: '15 Jan', title: 'Republic Day Celebration', desc: 'Patriotic program with flag hoisting and cultural performances' },
+          { date: '20 Jan', title: 'Science Fair 2024', desc: 'Students showcase innovative science projects and experiments' },
+          { date: '25 Jan', title: 'Parent-Teacher Meeting', desc: 'Quarterly progress discussion with parents' },
+          { date: '30 Jan', title: 'Inter-School Quiz', desc: 'Participating in district-level quiz competition' }
+        ],
+        testimonials: [
+          {
+            id: 1,
+            name: 'Mrs. Sunita Desai',
+            role: 'English Teacher',
+            text: 'J.J. School provides excellent facilities and a supportive environment for both teachers and students.',
+            rating: 5
+          },
+          {
+            id: 2,
+            name: 'Arjun Patil',
+            role: 'Grade 9 Student',
+            text: 'I love studying here! The teachers are helpful and the school has great sports facilities.',
+            rating: 5
+          },
+          {
+            id: 3,
+            name: 'Mr. Rajesh Kumar',
+            role: 'Parent',
+            text: 'My daughter has shown remarkable improvement since joining J.J. School. Highly recommended!',
+            rating: 5
+          }
+        ]
+      };
+    } else if (school?.slug === 'demo') {
+      return {
+        events: [
+          { date: '18 Jan', title: 'Cultural Fest 2024', desc: 'Three-day cultural festival featuring music, dance, and drama' },
+          { date: '22 Jan', title: 'Career Guidance Session', desc: 'Expert counselors guide students on career choices' },
+          { date: '28 Jan', title: 'Health Check-up Camp', desc: 'Free health screening for all students' },
+          { date: '02 Feb', title: 'Alumni Meet', desc: 'Former students share their success stories' }
+        ],
+        testimonials: [
+          {
+            id: 1,
+            name: 'Dr. Priya Sharma',
+            role: 'Science Teacher',
+            text: 'Demo School encourages innovative teaching methods and provides excellent resources for educators.',
+            rating: 5
+          },
+          {
+            id: 2,
+            name: 'Sneha Reddy',
+            role: 'Grade 11 Student',
+            text: 'The school offers amazing opportunities for extracurricular activities along with quality education.',
+            rating: 4
+          },
+          {
+            id: 3,
+            name: 'Mrs. Kavita Singh',
+            role: 'Parent',
+            text: 'Demo School has helped my son develop confidence and leadership skills. Great school community!',
+            rating: 5
+          }
+        ]
+      };
     }
-  ];
+    return { events: [], testimonials: [] };
+  };
+
+  const content = getSchoolContent();
 
   return (
     <>
@@ -57,7 +97,7 @@ export default function HomePage({ school }: HomePageProps) {
           {t.upcomingEvents}
         </h4>
         <Row>
-          {events.map((event, index) => (
+          {content.events.map((event, index) => (
             <Col md={6} key={index} className="mb-3">
               <Card className="h-100 shadow-sm border-0">
                 <Card.Body>
@@ -143,7 +183,7 @@ export default function HomePage({ school }: HomePageProps) {
           {t.whatCommunitySays}
         </h4>
         <Row>
-          {testimonials.map((testimonial) => (
+          {content.testimonials.map((testimonial) => (
             <Col md={4} key={testimonial.id} className="mb-3">
               <Card className="h-100 shadow-sm border-0">
                 <Card.Body className="p-3">

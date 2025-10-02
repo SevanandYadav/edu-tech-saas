@@ -14,16 +14,43 @@ export default function DashboardSidebar({ school }: DashboardSidebarProps) {
   const { t } = useLanguage();
   const [readNotifications, setReadNotifications] = useState<Set<number>>(new Set());
 
-  const notifications = [
-    t.feePaymentExtended,
-    t.parentTeacherMeeting,
-    t.newLibraryBooks,
-    t.busRouteChanges,
-    t.homeworkDeadline,
-    t.annualFunctionRehearsals,
-    t.medicalCheckup,
-    t.newAdmissionForms
-  ];
+  const getSchoolContent = () => {
+    if (school?.slug === 'jj') {
+      return {
+        notifications: [
+          'Fee payment deadline extended to January 20th',
+          'Parent-Teacher meeting scheduled for January 25th',
+          'New computer lab inaugurated - classes start Monday',
+          'Republic Day celebration preparations underway',
+          'Science fair registration open till January 15th',
+          'Annual day rehearsals begin next week',
+          'Health checkup camp on January 30th',
+          'Merit scholarship applications now open'
+        ],
+        principalMessage: 'Dear students and parents, we are committed to providing quality education and creating a nurturing environment for all our students. Together, we will achieve excellence.',
+        principalName: 'Dr. Rajesh Patil, Principal'
+      };
+    } else if (school?.slug === 'demo') {
+      return {
+        notifications: [
+          'New sports complex now open for all students',
+          'Digital classroom training for teachers completed',
+          'Cultural fest 2024 registrations are now open',
+          'Career guidance session on January 22nd',
+          'Art competition winners announced - congratulations!',
+          'Swimming pool maintenance scheduled for weekend',
+          'Alumni meet preparations in progress',
+          'Health and wellness week starts February 1st'
+        ],
+        principalMessage: 'Welcome to our school community! We believe in holistic education that nurtures not just academic excellence but also creativity, character, and leadership skills.',
+        principalName: 'Mrs. Sunita Sharma, Principal'
+      };
+    }
+    return { notifications: [], principalMessage: '', principalName: '' };
+  };
+
+  const content = getSchoolContent();
+  const notifications = content.notifications;
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
@@ -93,9 +120,9 @@ export default function DashboardSidebar({ school }: DashboardSidebarProps) {
             {t.principalMessage}
           </Card.Title>
           <Card.Text className="small mb-3">
-            {t.principalMessageText}
+            {content.principalMessage}
           </Card.Text>
-          <small className="text-muted fw-medium">{t.principalName}</small>
+          <small className="text-muted fw-medium">{content.principalName}</small>
         </Card.Body>
       </Card>
     </Col>

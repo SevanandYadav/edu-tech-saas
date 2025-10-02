@@ -35,12 +35,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# uploaded files - exclude all school folders except the default images
+# uploaded files - exclude all except default images
 /public/*/
 !/public/jj-english-medium-school/
 /public/jj-english-medium-school/*
-!/public/jj-english-medium-school/Interschool_Competition.png
-!/public/jj-english-medium-school/Science_Project.png
+!/public/jj-english-medium-school/*.png
 
 # logs
 *.log

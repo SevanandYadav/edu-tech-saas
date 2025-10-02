@@ -5,7 +5,7 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  generateBuildId: () => 'build',
+
   eslint: {
     ignoreDuringBuilds: true,
   },
