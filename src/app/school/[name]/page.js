@@ -1,9 +1,9 @@
-import { getAllSchools, getSchoolByName } from '@/lib/schools';
+import { getAllSchools, getSchoolBySlug } from '@/lib/schools';
 import SchoolDashboard from '@/components/SchoolDashboard';
 import { notFound } from 'next/navigation';
 
 export default function SchoolPage({ params }) {
-  const school = getSchoolByName(params.name);
+  const school = getSchoolBySlug(params.name);
   
   if (!school) {
     notFound();
@@ -15,6 +15,6 @@ export default function SchoolPage({ params }) {
 export function generateStaticParams() {
   const schools = getAllSchools();
   return schools.map((school) => ({
-    name: school.name,
+    name: school.slug,
   }));
 }

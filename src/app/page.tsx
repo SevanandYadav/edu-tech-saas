@@ -13,8 +13,8 @@ function HomeContent() {
   const schools = getAllSchools();
   const { language, changeLanguage, t } = useLanguage();
 
-  const handleSchoolSelect = (name: string) => {
-    router.push(`/school/${name}`);
+  const handleSchoolSelect = (slug: string) => {
+    router.push(`/${slug}`);
   };
 
   return (
@@ -81,7 +81,7 @@ function HomeContent() {
                         {schools.map((school) => (
                           <Dropdown.Item 
                             key={school.id}
-                            onClick={() => handleSchoolSelect(school.name)}
+                            onClick={() => handleSchoolSelect(school.slug)}
                             className="py-3"
                           >
                             <div>
