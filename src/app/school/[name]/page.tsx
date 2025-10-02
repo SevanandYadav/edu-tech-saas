@@ -2,13 +2,12 @@ import { getAllSchools, getSchoolByName } from '@/lib/schools';
 import SchoolDashboard from '@/components/SchoolDashboard';
 import { notFound } from 'next/navigation';
 
-export default async function SchoolPage({
+export default function SchoolPage({
   params,
 }: {
-  params: Promise<{ name: string }>;
+  params: { name: string };
 }) {
-  const { name } = await params;
-  const school = getSchoolByName(name);
+  const school = getSchoolByName(params.name);
   
   if (!school) {
     notFound();
@@ -17,7 +16,7 @@ export default async function SchoolPage({
   return <SchoolDashboard school={school} />;
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const schools = getAllSchools();
   return schools.map((school) => ({
     name: school.name,
