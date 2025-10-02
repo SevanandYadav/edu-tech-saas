@@ -2,11 +2,7 @@ import { getAllSchools, getSchoolByName } from '@/lib/schools';
 import SchoolDashboard from '@/components/SchoolDashboard';
 import { notFound } from 'next/navigation';
 
-export default function SchoolPage({
-  params,
-}: {
-  params: { name: string };
-}) {
+export default function SchoolPage({ params }) {
   const school = getSchoolByName(params.name);
   
   if (!school) {
