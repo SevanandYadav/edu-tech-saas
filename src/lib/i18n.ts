@@ -19,6 +19,7 @@ export interface Translations {
   readMore: string;
   viewAll: string;
   portalLogin: string;
+  login: string;
   backToHome: string;
   
   // Home page
@@ -183,6 +184,7 @@ export const translations: Record<Language, Translations> = {
     readMore: 'Read More',
     viewAll: 'View All',
     portalLogin: 'Portal Login',
+    login: 'Login',
     backToHome: 'Back to Home',
     
     // Home page
@@ -346,6 +348,7 @@ export const translations: Record<Language, Translations> = {
     readMore: 'और पढ़ें',
     viewAll: 'सभी देखें',
     portalLogin: 'पोर्टल लॉगिन',
+    login: 'लॉगिन',
     backToHome: 'होम पर वापस',
     
     // Home page
@@ -509,6 +512,7 @@ export const translations: Record<Language, Translations> = {
     readMore: 'अधिक वाचा',
     viewAll: 'सर्व पहा',
     portalLogin: 'पोर्टल लॉगिन',
+    login: 'लॉगिन',
     backToHome: 'मुख्यपृष्ठावर परत',
     
     // Home page
