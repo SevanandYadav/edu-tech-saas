@@ -45,7 +45,7 @@ export default function StudentLifePage({ uploadedPhotos = [], school }: Student
           {t.studentLife}
         </h3>
         
-        <div className="mb-4">
+        <div className="mb-5">
           <h5 className="fw-bold text-dark mb-3">
             <span className="me-2">📷</span>
             {t.lifeAtSchool}
@@ -53,23 +53,26 @@ export default function StudentLifePage({ uploadedPhotos = [], school }: Student
           <Carousel indicators={true} controls={true} interval={3000}>
             {photos.map((photo, index) => (
               <Carousel.Item key={index}>
-                <div className="d-flex justify-content-center align-items-center bg-light" style={{ height: '250px', minHeight: '200px' }}>
-                  <div className="text-center px-2">
-                    {photo.img.startsWith('/') ? (
-                      <div className="mb-2">
-                        <Image 
-                          src={photo.img} 
-                          alt={photo.title}
-                          width={300}
-                          height={150}
-                          style={{ objectFit: 'cover', borderRadius: '8px', maxWidth: '100%', height: 'auto' }}
-                        />
-                      </div>
-                    ) : (
-                      <div className="display-4 display-md-1 mb-2">{photo.img}</div>
-                    )}
-                    <h6 className="h6 h-md-5 fw-bold">{photo.title}</h6>
-                    <p className="text-muted small">{photo.desc}</p>
+                <div className="bg-light" style={{ height: '400px', position: 'relative' }}>
+                  {photo.img.startsWith('/') ? (
+                    <img 
+                      src={photo.img} 
+                      alt={photo.title}
+                      style={{ 
+                        width: '100%', 
+                        height: '300px', 
+                        objectFit: 'cover', 
+                        borderRadius: '8px 8px 0 0' 
+                      }}
+                    />
+                  ) : (
+                    <div className="d-flex justify-content-center align-items-center" style={{ height: '300px' }}>
+                      <div className="display-1">{photo.img}</div>
+                    </div>
+                  )}
+                  <div className="p-3 bg-white" style={{ borderRadius: '0 0 8px 8px' }}>
+                    <h6 className="fw-bold mb-1">{photo.title}</h6>
+                    <p className="text-muted small mb-0">{photo.desc}</p>
                   </div>
                 </div>
               </Carousel.Item>
