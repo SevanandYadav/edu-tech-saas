@@ -1,7 +1,6 @@
 'use client';
 
 import { School } from '@/lib/schools';
-import Link from 'next/link';
 import { useState } from 'react';
 import { Nav, Dropdown } from 'react-bootstrap';
 import { useLanguage } from '@/hooks/useLanguage';
@@ -95,11 +94,6 @@ export default function DashboardHeader({ school, activeMenu, setActiveMenu, onP
                     <i className="bi bi-gear-fill me-2 text-warning"></i>
                     {t.adminPanel}
                   </Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Item as={Link} href="/" className="py-2 text-muted">
-                    <i className="bi bi-house-fill me-2"></i>
-                    {t.backToHome}
-                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             )}
@@ -174,11 +168,6 @@ export default function DashboardHeader({ school, activeMenu, setActiveMenu, onP
                   <Dropdown.Item onClick={() => handleLoginClick(t.adminPanel)} className="py-2">
                     <i className="bi bi-gear-fill me-2 text-warning"></i>
                     {t.adminPanel}
-                  </Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Item as={Link} href="/" className="py-2 text-muted">
-                    <i className="bi bi-house-fill me-2"></i>
-                    {t.backToHome}
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
