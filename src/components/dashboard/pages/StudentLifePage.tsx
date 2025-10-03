@@ -5,8 +5,14 @@ import { Row, Col, Card, Carousel, Modal } from 'react-bootstrap';
 import { useLanguage } from '@/hooks/useLanguage';
 
 
+interface Photo {
+  img: string;
+  title: string;
+  desc: string;
+}
+
 interface StudentLifePageProps {
-  uploadedPhotos?: any[];
+  uploadedPhotos?: Photo[];
   school?: any;
 }
 
@@ -43,14 +49,14 @@ export default function StudentLifePage({ uploadedPhotos = [], school }: Student
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handlePhotoClick = (photo, index) => {
+  const handlePhotoClick = (photo: Photo, index: number) => {
     if (photo.img.startsWith('/')) {
       setSelectedPhotoIndex(index);
       setShowModal(true);
     }
   };
 
-  const navigatePhoto = (direction) => {
+  const navigatePhoto = (direction: number) => {
     const imagePhotos = photos.filter(p => p.img.startsWith('/'));
     const currentImageIndex = imagePhotos.findIndex((_, i) => i === selectedPhotoIndex);
     let newIndex = currentImageIndex + direction;
