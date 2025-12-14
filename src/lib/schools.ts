@@ -53,3 +53,12 @@ export async function loadAllSchools(): Promise<School[]> {
   console.log('Final schools array:', schools);
   return schools;
 }
+
+// Backward compatibility exports
+export async function getAllSchools(): Promise<School[]> {
+  return loadAllSchools();
+}
+
+export async function getSchoolBySlug(slug: string): Promise<School | null> {
+  return loadSchoolData(slug);
+}

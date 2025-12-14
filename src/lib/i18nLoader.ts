@@ -45,7 +45,7 @@ export async function loadSchoolTranslations(schoolSlug: string, language: Langu
     if (response.ok) {
       const translations = await response.json();
       if (!translationsCache[schoolSlug]) {
-        translationsCache[schoolSlug] = {};
+        translationsCache[schoolSlug] = {} as Record<Language, Translations>;
       }
       translationsCache[schoolSlug][language] = translations;
       return translations;
