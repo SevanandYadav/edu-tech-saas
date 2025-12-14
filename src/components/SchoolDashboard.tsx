@@ -44,7 +44,7 @@ function SchoolDashboardContent({ school }: SchoolDashboardProps) {
         />
         <Container fluid className="px-2 px-md-3">
           <Row className="g-2 g-md-3">
-            <Col xs={12} lg={9} className="order-2 order-lg-1">
+            <Col xs={12} lg={9} className="order-1">
               <div className="p-2 p-md-4">
                 <DashboardContent 
                   school={school} 
@@ -53,13 +53,8 @@ function SchoolDashboardContent({ school }: SchoolDashboardProps) {
                 />
               </div>
             </Col>
-            <Col xs={12} lg={3} className="order-1 order-lg-2">
-              <div className="d-lg-none mb-3">
-                <DashboardSidebar school={school} />
-              </div>
-              <div className="d-none d-lg-block">
-                <DashboardSidebar school={school} />
-              </div>
+            <Col xs={12} lg={3} className="order-2">
+              <DashboardSidebar school={school} />
             </Col>
           </Row>
         </Container>
