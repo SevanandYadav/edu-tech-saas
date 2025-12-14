@@ -2,15 +2,15 @@ import { getAllSchools, getSchoolBySlug } from '@/lib/schools';
 import SchoolDashboard from '@/components/SchoolDashboard';
 import { notFound } from 'next/navigation';
 
-export function generateMetadata({ params }) {
-  const school = getSchoolBySlug(params.name);
+export async function generateMetadata({ params }) {
+  const school = await getSchoolBySlug(params.name);
   return {
     title: school ? school.displayName : 'School Not Found',
   };
 }
 
-export default function SchoolPage({ params }) {
-  const school = getSchoolBySlug(params.name);
+export default async function SchoolPage({ params }) {
+  const school = await getSchoolBySlug(params.name);
   
   if (!school) {
     notFound();
@@ -19,8 +19,8 @@ export default function SchoolPage({ params }) {
   return <SchoolDashboard school={school} />;
 }
 
-export function generateStaticParams() {
-  const schools = getAllSchools();
+export async function generateStaticParams() {
+  const schools = await getAllSchools();
   return schools.map((school) => ({
     name: school.slug,
   }));
