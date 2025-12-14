@@ -36,7 +36,7 @@ export default function HomePage({ school }: HomePageProps) {
     <>
       <Card className="text-white mb-4" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
         <Card.Body className="p-4">
-          <Card.Title className="h3 fw-bold mb-2">{t.welcomeMessage || 'Welcome to'} {school.displayName}</Card.Title>
+          <Card.Title className="h3 fw-bold mb-2">{t.welcomeMessage || 'Welcome to Our School'}</Card.Title>
           <Card.Text className="opacity-75">Excellence in Education • Shaping Future Leaders</Card.Text>
         </Card.Body>
       </Card>
