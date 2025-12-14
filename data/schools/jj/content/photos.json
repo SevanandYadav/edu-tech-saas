@@ -5,8 +5,8 @@
     "desc": "Students participating in various competitions"
   },
   {
-    "img": "/jj-english-medium-school/Science_Project.png", 
-    "title": "Science Project",
+    "img": "/jj-english-medium-school/Science_Project.png",
+    "title": "Science Project", 
     "desc": "Innovative science projects and experiments"
   },
   {
@@ -16,11 +16,11 @@
   },
   {
     "img": "🎭",
-    "title": "Cultural Program", 
+    "title": "Cultural Program",
     "desc": "Students performing in annual cultural festival"
   },
   {
-    "img": "📚",
+    "img": "📚", 
     "title": "Library Session",
     "desc": "Students engaged in reading and research activities"
   },

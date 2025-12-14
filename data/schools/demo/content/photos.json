@@ -5,8 +5,8 @@
     "desc": "Annual sports competition and athletic events"
   },
   {
-    "img": "🎪", 
-    "title": "Annual Function",
+    "img": "🎪",
+    "title": "Annual Function", 
     "desc": "Grand celebration with performances and awards"
   },
   {
@@ -21,12 +21,12 @@
   },
   {
     "img": "📖",
-    "title": "Reading Club", 
+    "title": "Reading Club",
     "desc": "Promoting literacy and love for books"
   },
   {
     "img": "🌍",
-    "title": "Earth Day",
+    "title": "Earth Day", 
     "desc": "Environmental awareness and green initiatives"
   }
 ]
