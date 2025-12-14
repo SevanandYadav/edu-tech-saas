@@ -1,17 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { getAllSchools } from '@/lib/schools';
+import { loadAllSchools } from '@/lib/schools';
 import { Container, Row, Col, Card, Button, Dropdown } from 'react-bootstrap';
 import { LanguageProvider, useLanguage } from '@/contexts/LanguageContext';
 import { languageNames } from '@/lib/i18n';
 
 function HomeContent() {
   const [schoolName, setSchoolName] = useState('');
+  const [schools, setSchools] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
-  const schools = getAllSchools();
   const { language, changeLanguage, t } = useLanguage();
+
+  useEffect(() => {
+    loadAllSchools().then(schoolData => {
+      setSchools(schoolData);
+      setLoading(false);
+    });
+  }, []);
 
   const handleSchoolSelect = (slug: string) => {
     router.push(`/${slug}`);
@@ -65,33 +73,41 @@ function HomeContent() {
                   </Card.Title>
                   
                   <div className="text-center">
-                    <Dropdown className="d-grid">
-                      <Dropdown.Toggle 
-                        variant="primary" 
-                        size="lg" 
-                        className="fw-semibold py-3"
-                      >
-                        <i className="bi bi-building me-2"></i>
-                        {t.selectSchool}
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu className="w-100 shadow-lg">
-                        <Dropdown.Header className="text-muted small fw-bold">
-                          AVAILABLE SCHOOLS
-                        </Dropdown.Header>
-                        {schools.map((school) => (
-                          <Dropdown.Item 
-                            key={school.id}
-                            onClick={() => handleSchoolSelect(school.slug)}
-                            className="py-3"
-                          >
-                            <div>
-                              <div className="fw-bold">{school.displayName}</div>
-                              <small className="text-muted">{school.location}</small>
-                            </div>
-                          </Dropdown.Item>
-                        ))}
-                      </Dropdown.Menu>
-                    </Dropdown>
+                    {loading ? (
+                      <div className="text-center py-4">
+                        <div className="spinner-border text-primary" role="status">
+                          <span className="visually-hidden">Loading schools...</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <Dropdown className="d-grid">
+                        <Dropdown.Toggle 
+                          variant="primary" 
+                          size="lg" 
+                          className="fw-semibold py-3"
+                        >
+                          <i className="bi bi-building me-2"></i>
+                          {t.selectSchool}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu className="w-100 shadow-lg">
+                          <Dropdown.Header className="text-muted small fw-bold">
+                            AVAILABLE SCHOOLS
+                          </Dropdown.Header>
+                          {schools.map((school) => (
+                            <Dropdown.Item 
+                              key={school.id}
+                              onClick={() => handleSchoolSelect(school.slug)}
+                              className="py-3"
+                            >
+                              <div>
+                                <div className="fw-bold">{school.displayName}</div>
+                                <small className="text-muted">{school.location}</small>
+                              </div>
+                            </Dropdown.Item>
+                          ))}
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    )}
                   </div>
                 </Card.Body>
               </Card>

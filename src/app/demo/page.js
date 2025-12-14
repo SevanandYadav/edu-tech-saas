@@ -1,11 +1,40 @@
-import { getSchoolBySlug } from '@/lib/schools';
+'use client';
+
+import { useState, useEffect } from 'react';
+import { loadSchoolData } from '@/lib/schools';
 import SchoolDashboard from '@/components/SchoolDashboard';
 
-export const metadata = {
-  title: 'Demo School',
-};
-
 export default function DemoSchoolPage() {
-  const school = getSchoolBySlug('demo');
+  const [school, setSchool] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadSchoolData('demo').then(schoolData => {
+      setSchool(schoolData);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-vh-100 d-flex align-items-center justify-content-center">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading school...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!school) {
+    return (
+      <div className="min-vh-100 d-flex align-items-center justify-content-center">
+        <div className="text-center">
+          <h3>School not found</h3>
+          <p>Unable to load school data.</p>
+        </div>
+      </div>
+    );
+  }
+
   return <SchoolDashboard school={school} />;
 }
