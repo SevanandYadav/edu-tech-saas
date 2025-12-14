@@ -1,0 +1,22 @@
+[
+  {
+    "date": "18 Jan",
+    "title": "Cultural Fest 2024",
+    "description": "Three-day cultural festival featuring music, dance, and drama"
+  },
+  {
+    "date": "22 Jan",
+    "title": "Career Guidance Session", 
+    "description": "Expert counselors guide students on career choices"
+  },
+  {
+    "date": "28 Jan",
+    "title": "Health Check-up Camp",
+    "description": "Free health screening for all students"
+  },
+  {
+    "date": "02 Feb",
+    "title": "Alumni Meet",
+    "description": "Former students share their success stories"
+  }
+]

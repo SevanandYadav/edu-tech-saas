@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Priya Sharma",
+    "role": "Science Teacher",
+    "text": "Demo School encourages innovative teaching methods and provides excellent resources for educators.",
+    "rating": 5
+  },
+  {
+    "id": 2, 
+    "name": "Sneha Reddy",
+    "role": "Grade 11 Student",
+    "text": "The school offers amazing opportunities for extracurricular activities along with quality education.",
+    "rating": 4
+  },
+  {
+    "id": 3,
+    "name": "Mrs. Kavita Singh",
+    "role": "Parent", 
+    "text": "Demo School has helped my son develop confidence and leadership skills. Great school community!",
+    "rating": 5
+  }
+]

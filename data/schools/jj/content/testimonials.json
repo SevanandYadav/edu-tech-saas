@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Mrs. Sunita Desai",
+    "role": "English Teacher", 
+    "text": "J.J. School provides excellent facilities and a supportive environment for both teachers and students.",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Arjun Patil",
+    "role": "Grade 9 Student",
+    "text": "I love studying here! The teachers are helpful and the school has great sports facilities.",
+    "rating": 5
+  },
+  {
+    "id": 3,
+    "name": "Mr. Rajesh Kumar", 
+    "role": "Parent",
+    "text": "My daughter has shown remarkable improvement since joining J.J. School. Highly recommended!",
+    "rating": 5
+  }
+]
