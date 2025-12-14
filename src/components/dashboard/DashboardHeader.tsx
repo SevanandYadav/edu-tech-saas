@@ -39,17 +39,66 @@ export default function DashboardHeader({ school, activeMenu, setActiveMenu, onP
   return (
     <div className="bg-white shadow-sm border-bottom">
       <div className="text-center py-2 border-bottom" style={{ backgroundColor: `${school.primaryColor}15` }}>
-        {/* School info - centered */}
-        <div className="d-flex align-items-center justify-content-center mb-2 position-relative">
+        {/* Language selector - top left */}
+        <div className="position-absolute start-0 top-0 mt-2 ms-2 ms-md-3">
+          <Dropdown>
+            <Dropdown.Toggle 
+              variant="outline-secondary" 
+              size="sm"
+              className="fw-semibold px-2 px-md-3 py-1 py-md-2"
+              style={{ height: '32px', minHeight: '32px' }}
+            >
+              <i className="bi bi-translate d-md-none"></i>
+              <span className="d-none d-md-inline">
+                <i className="bi bi-translate me-2"></i>
+                {languageNames[language]}
+              </span>
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Header>{t.language}</Dropdown.Header>
+              {Object.entries(languageNames).map(([code, name]) => (
+                <Dropdown.Item 
+                  key={code}
+                  onClick={() => changeLanguage(code as any)}
+                  className={language === code ? 'active' : ''}
+                >
+                  {name}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+
+        {/* Login button - top right */}
+        <div className="position-absolute end-0 top-0 mt-2 me-2 me-md-3">
+          {isLoggedIn ? (
+            <UserMenu school={school} onPhotosUploaded={onPhotosUploaded} />
+          ) : (
+            <button
+              className="btn btn-primary fw-semibold px-2 px-md-3 py-1 py-md-2"
+              onClick={handleLoginClick}
+              style={{ backgroundColor: school.primaryColor, borderColor: school.primaryColor, height: '32px', minHeight: '32px' }}
+            >
+              <i className="bi bi-box-arrow-in-right d-md-none"></i>
+              <span className="d-none d-md-inline">
+                <i className="bi bi-box-arrow-in-right me-2"></i>
+                {t.login || 'Login'}
+              </span>
+            </button>
+          )}
+        </div>
+
+        {/* School info - perfectly centered */}
+        <div className="d-flex align-items-center justify-content-center mb-2 mt-4">
           <div className="d-flex flex-column align-items-center school-info">
-          <style>{`
-            .school-info {
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              max-width: 60%;
-            }
-          `}</style>
+            <style>{`
+              .school-info {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                max-width: 70%;
+              }
+            `}</style>
             <div 
               className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold mb-2"
               style={{ 
@@ -63,54 +112,6 @@ export default function DashboardHeader({ school, activeMenu, setActiveMenu, onP
             </div>
             <h1 className="h5 h-md-4 fw-bold text-dark mb-0">{school.displayName}</h1>
             <p className="text-muted mb-0" style={{ fontSize: '0.8rem' }}>{school.location}</p>
-          </div>
-          
-          {/* All buttons - positioned absolutely on right */}
-          <div className="position-absolute end-0 me-2 me-md-3">
-            <div className="d-flex gap-2">
-              <Dropdown>
-                <Dropdown.Toggle 
-                  variant="outline-secondary" 
-                  size="sm"
-                  className="fw-semibold px-2 px-md-3 py-1 py-md-2"
-                  style={{ height: '32px', minHeight: '32px' }}
-                >
-                  <i className="bi bi-translate d-md-none"></i>
-                  <span className="d-none d-md-inline">
-                    <i className="bi bi-translate me-2"></i>
-                    {languageNames[language]}
-                  </span>
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Header>{t.language}</Dropdown.Header>
-                  {Object.entries(languageNames).map(([code, name]) => (
-                    <Dropdown.Item 
-                      key={code}
-                      onClick={() => changeLanguage(code as any)}
-                      className={language === code ? 'active' : ''}
-                    >
-                      {name}
-                    </Dropdown.Item>
-                  ))}
-                </Dropdown.Menu>
-              </Dropdown>
-              
-              {isLoggedIn ? (
-                <UserMenu school={school} onPhotosUploaded={onPhotosUploaded} />
-              ) : (
-                <button
-                  className="btn btn-primary fw-semibold px-2 px-md-3 py-1 py-md-2"
-                  onClick={handleLoginClick}
-                  style={{ backgroundColor: school.primaryColor, borderColor: school.primaryColor, height: '32px', minHeight: '32px' }}
-                >
-                  <i className="bi bi-box-arrow-in-right d-md-none"></i>
-                  <span className="d-none d-md-inline">
-                    <i className="bi bi-box-arrow-in-right me-2"></i>
-                    {t.login || 'Login'}
-                  </span>
-                </button>
-              )}
-            </div>
           </div>
         </div>
 
