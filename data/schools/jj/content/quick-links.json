@@ -1,0 +1,82 @@
+{
+  "STUDENT": [
+    {
+      "title": "My Assignments",
+      "icon": "📝",
+      "description": "View and submit assignments",
+      "link": "/assignments"
+    },
+    {
+      "title": "My Results",
+      "icon": "📊", 
+      "description": "Check grades and progress",
+      "link": "/results"
+    },
+    {
+      "title": "My Timetable",
+      "icon": "📅",
+      "description": "View class schedule",
+      "link": "/timetable"
+    }
+  ],
+  "TEACHER": [
+    {
+      "title": "Manage Classes",
+      "icon": "👨🏫",
+      "description": "View and manage your classes",
+      "link": "/classes"
+    },
+    {
+      "title": "Student Records",
+      "icon": "📋",
+      "description": "Access student information",
+      "link": "/students"
+    },
+    {
+      "title": "Create Assignment",
+      "icon": "📝",
+      "description": "Create new assignments",
+      "link": "/create-assignment"
+    }
+  ],
+  "PARENT": [
+    {
+      "title": "Child's Progress",
+      "icon": "📈",
+      "description": "Monitor academic progress",
+      "link": "/child-progress"
+    },
+    {
+      "title": "Fee Payment",
+      "icon": "💳",
+      "description": "Pay school fees online",
+      "link": "/fees"
+    },
+    {
+      "title": "Teacher Communication",
+      "icon": "💬",
+      "description": "Message teachers",
+      "link": "/messages"
+    }
+  ],
+  "ADMIN": [
+    {
+      "title": "User Management",
+      "icon": "👥",
+      "description": "Manage users and roles",
+      "link": "/users"
+    },
+    {
+      "title": "School Analytics",
+      "icon": "📊",
+      "description": "View school statistics",
+      "link": "/analytics"
+    },
+    {
+      "title": "System Settings",
+      "icon": "⚙️",
+      "description": "Configure system settings",
+      "link": "/settings"
+    }
+  ]
+}

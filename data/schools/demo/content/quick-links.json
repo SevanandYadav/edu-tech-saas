@@ -1,0 +1,82 @@
+{
+  "STUDENT": [
+    {
+      "title": "My Assignments",
+      "icon": "📝",
+      "description": "View and submit assignments",
+      "link": "/assignments"
+    },
+    {
+      "title": "My Results",
+      "icon": "📊",
+      "description": "Check grades and progress", 
+      "link": "/results"
+    },
+    {
+      "title": "Digital Library",
+      "icon": "📚",
+      "description": "Access online resources",
+      "link": "/library"
+    }
+  ],
+  "TEACHER": [
+    {
+      "title": "My Classes",
+      "icon": "👨🏫",
+      "description": "Manage your classes",
+      "link": "/classes"
+    },
+    {
+      "title": "Grade Students",
+      "icon": "📝",
+      "description": "Grade assignments and tests",
+      "link": "/grading"
+    },
+    {
+      "title": "Attendance",
+      "icon": "✅",
+      "description": "Mark student attendance",
+      "link": "/attendance"
+    }
+  ],
+  "PARENT": [
+    {
+      "title": "Child's Report",
+      "icon": "📋",
+      "description": "View academic reports",
+      "link": "/reports"
+    },
+    {
+      "title": "Fee Status",
+      "icon": "💰",
+      "description": "Check fee payment status",
+      "link": "/fee-status"
+    },
+    {
+      "title": "School Events",
+      "icon": "🎉",
+      "description": "View upcoming events",
+      "link": "/events"
+    }
+  ],
+  "ADMIN": [
+    {
+      "title": "Manage Users",
+      "icon": "👤",
+      "description": "Add and manage users",
+      "link": "/manage-users"
+    },
+    {
+      "title": "Reports",
+      "icon": "📈",
+      "description": "Generate school reports",
+      "link": "/reports"
+    },
+    {
+      "title": "Settings",
+      "icon": "🔧",
+      "description": "System configuration",
+      "link": "/admin-settings"
+    }
+  ]
+}
