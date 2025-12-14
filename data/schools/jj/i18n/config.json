@@ -1,0 +1,10 @@
+{
+  "supportedLanguages": ["en", "hi", "mr"],
+  "defaultLanguage": "en",
+  "languageNames": {
+    "en": "English",
+    "hi": "हिंदी", 
+    "mr": "मराठी"
+  },
+  "fallbackLanguage": "en"
+}
