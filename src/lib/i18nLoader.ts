@@ -11,7 +11,7 @@ export interface I18nConfig {
   fallbackLanguage: Language;
 }
 
-const DATA_BRANCH_URL = 'https://raw.githubusercontent.com/SevanandYadav/edu-tech-saas/data';
+const DATA_BRANCH_URL = process.env.NEXT_PUBLIC_DATA_BRANCH_URL || 'https://raw.githubusercontent.com/SevanandYadav/edu-tech-saas/data';
 
 let translationsCache: Record<string, Record<Language, Translations>> = {};
 let configCache: Record<string, I18nConfig> = {};

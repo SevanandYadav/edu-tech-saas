@@ -4,6 +4,7 @@ import { School } from '@/lib/schools';
 import { Row, Col, Card } from 'react-bootstrap';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useState, useEffect } from 'react';
+import { loadContent } from '@/lib/contentLoader';
 
 interface AboutPageProps {
   school: School;
@@ -28,8 +29,7 @@ export default function AboutPage({ school }: AboutPageProps) {
 
   useEffect(() => {
     if (school?.slug) {
-      fetch(`https://raw.githubusercontent.com/SevanandYadav/edu-tech-saas/data/data/schools/${school.slug}/content/about.json`)
-        .then(res => res.json())
+      loadContent<AboutData>(school.slug, 'about')
         .then(data => {
           setAboutData(data);
           setLoading(false);

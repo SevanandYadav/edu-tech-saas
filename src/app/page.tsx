@@ -15,10 +15,16 @@ function HomeContent() {
   const { language, changeLanguage, t, loading: langLoading } = useLanguage();
 
   useEffect(() => {
-    loadAllSchools().then(schoolData => {
-      setSchools(schoolData);
-      setLoading(false);
-    });
+    loadAllSchools()
+      .then(schoolData => {
+        console.log('Loaded schools:', schoolData);
+        setSchools(schoolData);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Failed to load schools:', error);
+        setLoading(false);
+      });
   }, []);
 
   const handleSchoolSelect = (slug: string) => {

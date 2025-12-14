@@ -4,6 +4,7 @@ import { Row, Col, Card } from 'react-bootstrap';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useState, useEffect } from 'react';
 import { School } from '@/lib/schools';
+import { loadContent } from '@/lib/contentLoader';
 
 interface AwardsPageProps {
   school: School;
@@ -23,10 +24,9 @@ export default function AwardsPage({ school }: AwardsPageProps) {
 
   useEffect(() => {
     if (school?.slug) {
-      fetch(`https://raw.githubusercontent.com/SevanandYadav/edu-tech-saas/data/data/schools/${school.slug}/content/awards.json`)
-        .then(res => res.json())
+      loadContent<Award[]>(school.slug, 'awards')
         .then(data => {
-          setAwards(data);
+          setAwards(data || []);
           setLoading(false);
         })
         .catch(err => {

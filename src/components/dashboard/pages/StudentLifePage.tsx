@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Row, Col, Card, Carousel, Modal } from 'react-bootstrap';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { loadContent } from '@/lib/contentLoader';
 
 
 interface Photo {
@@ -34,8 +35,7 @@ export default function StudentLifePage({ uploadedPhotos = [], school }: Student
 
   useEffect(() => {
     if (school?.slug) {
-      fetch(`https://raw.githubusercontent.com/SevanandYadav/edu-tech-saas/data/data/schools/${school.slug}/content/student-life.json`)
-        .then(res => res.json())
+      loadContent<StudentLifeData>(school.slug, 'student-life')
         .then(data => {
           setStudentLifeData(data);
           setDataLoading(false);
@@ -52,10 +52,9 @@ export default function StudentLifePage({ uploadedPhotos = [], school }: Student
 
   useEffect(() => {
     if (school?.slug) {
-      fetch(`https://raw.githubusercontent.com/SevanandYadav/edu-tech-saas/data/data/schools/${school.slug}/content/photos.json`)
-        .then(res => res.json())
+      loadContent<Photo[]>(school.slug, 'photos')
         .then(data => {
-          setDefaultPhotos(data);
+          setDefaultPhotos(data || []);
           setPhotosLoading(false);
         })
         .catch(err => {

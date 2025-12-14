@@ -54,7 +54,7 @@ export interface AdmissionData {
 
 let contentCache: Record<string, any> = {};
 
-async function loadContent<T>(schoolSlug: string, contentType: string): Promise<T | null> {
+export async function loadContent<T>(schoolSlug: string, contentType: string): Promise<T | null> {
   const cacheKey = `${schoolSlug}-${contentType}`;
   if (contentCache[cacheKey]) {
     return contentCache[cacheKey];
