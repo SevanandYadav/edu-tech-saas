@@ -1,0 +1,32 @@
+[
+  {
+    "img": "🏆",
+    "title": "Sports Day",
+    "desc": "Annual sports competition and athletic events"
+  },
+  {
+    "img": "🎪", 
+    "title": "Annual Function",
+    "desc": "Grand celebration with performances and awards"
+  },
+  {
+    "img": "🔬",
+    "title": "Science Fair",
+    "desc": "Students showcasing innovative science projects"
+  },
+  {
+    "img": "🎵",
+    "title": "Music Concert",
+    "desc": "Musical performances by talented students"
+  },
+  {
+    "img": "📖",
+    "title": "Reading Club", 
+    "desc": "Promoting literacy and love for books"
+  },
+  {
+    "img": "🌍",
+    "title": "Earth Day",
+    "desc": "Environmental awareness and green initiatives"
+  }
+]

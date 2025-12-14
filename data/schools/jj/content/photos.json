@@ -1,0 +1,32 @@
+[
+  {
+    "img": "/jj-english-medium-school/Interschool_Competition.png",
+    "title": "Inter-School Competition",
+    "desc": "Students participating in various competitions"
+  },
+  {
+    "img": "/jj-english-medium-school/Science_Project.png", 
+    "title": "Science Project",
+    "desc": "Innovative science projects and experiments"
+  },
+  {
+    "img": "🎨",
+    "title": "Art Exhibition",
+    "desc": "Creative artwork displayed by talented students"
+  },
+  {
+    "img": "🎭",
+    "title": "Cultural Program", 
+    "desc": "Students performing in annual cultural festival"
+  },
+  {
+    "img": "📚",
+    "title": "Library Session",
+    "desc": "Students engaged in reading and research activities"
+  },
+  {
+    "img": "🌱",
+    "title": "Environmental Day",
+    "desc": "Tree plantation and environmental awareness activities"
+  }
+]
