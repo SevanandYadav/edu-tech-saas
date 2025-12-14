@@ -38,9 +38,9 @@ export default function DashboardHeader({ school, activeMenu, setActiveMenu, onP
 
   return (
     <div className="bg-white shadow-sm border-bottom">
-      <div className="text-center py-3 border-bottom" style={{ backgroundColor: `${school.primaryColor}15` }}>
+      <div className="text-center py-2 border-bottom" style={{ backgroundColor: `${school.primaryColor}15` }}>
         {/* Mobile buttons - above school info */}
-        <div className="d-flex d-md-none justify-content-end mb-3 px-3">
+        <div className="d-flex d-md-none justify-content-end mb-2 px-3">
           <div className="d-flex gap-2">
             <Dropdown>
               <Dropdown.Toggle 
@@ -99,15 +99,15 @@ export default function DashboardHeader({ school, activeMenu, setActiveMenu, onP
               className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold mb-2"
               style={{ 
                 backgroundColor: school.primaryColor,
-                width: '50px',
-                height: '50px',
-                fontSize: '1.2rem'
+                width: '40px',
+                height: '40px',
+                fontSize: '1rem'
               }}
             >
               {school.displayName.charAt(0)}
             </div>
-            <h1 className="h4 h-md-3 fw-bold text-dark mb-1">{school.displayName}</h1>
-            <p className="text-muted mb-0 small">{school.location}</p>
+            <h1 className="h5 h-md-4 fw-bold text-dark mb-0">{school.displayName}</h1>
+            <p className="text-muted mb-0" style={{ fontSize: '0.8rem' }}>{school.location}</p>
           </div>
           
           {/* Desktop buttons - positioned absolutely */}
@@ -153,13 +153,13 @@ export default function DashboardHeader({ school, activeMenu, setActiveMenu, onP
 
       </div>
       
-      <Nav className="justify-content-start bg-light py-2 overflow-auto" style={{ paddingLeft: '10%' }}>
+      <Nav className="justify-content-start bg-light py-1 overflow-auto" style={{ paddingLeft: '5%' }}>
         <div className="d-flex flex-nowrap" style={{ minWidth: 'max-content' }}>
           {menuItems.map((item) => (
             <Nav.Link
               key={item.id}
               onClick={() => setActiveMenu(item.id)}
-              className={`px-2 px-md-3 py-2 rounded mx-1 text-nowrap small ${
+              className={`px-2 px-md-3 py-1 rounded mx-1 text-nowrap small ${
                 activeMenu === item.id ? 'text-white' : 'text-dark'
               }`}
               style={activeMenu === item.id ? { backgroundColor: school.primaryColor } : {}}
