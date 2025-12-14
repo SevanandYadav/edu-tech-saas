@@ -127,7 +127,7 @@ export default function StudentLifePage({ uploadedPhotos = [], school }: Student
             <Carousel indicators={true} controls={false} interval={3000} activeIndex={activeIndex} onSelect={setActiveIndex}>
             {photos.map((photo, index) => (
               <Carousel.Item key={index}>
-                <div className="bg-light" style={{ height: '400px', position: 'relative' }}>
+                <div className="bg-light" style={{ height: 'clamp(250px, 50vw, 400px)', position: 'relative' }}>
                   {photo.img.startsWith('/') ? (
                     <img 
                       src={photo.img} 
@@ -145,11 +145,11 @@ export default function StudentLifePage({ uploadedPhotos = [], school }: Student
                       }}
                     />
                   ) : (
-                    <div className="d-flex justify-content-center align-items-center" style={{ height: '300px' }}>
+                    <div className="d-flex justify-content-center align-items-center" style={{ height: 'clamp(180px, 40vw, 300px)' }}>
                       <div className="display-1">{photo.img}</div>
                     </div>
                   )}
-                  <div className="p-3 bg-white text-center" style={{ borderRadius: '0 0 8px 8px', margin: '0 50px' }}>
+                  <div className="p-2 p-md-3 bg-white text-center" style={{ borderRadius: '0 0 8px 8px', margin: '0 10px' }}>
                     <h6 className="fw-bold mb-1">{photo.title}</h6>
                     <p className="text-muted small mb-0">{photo.desc}</p>
                   </div>

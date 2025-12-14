@@ -58,7 +58,7 @@ export default function OnlineApplicationForm({ show, onHide, schoolName }: Onli
   };
 
   return (
-    <Modal show={show} onHide={onHide} size="lg" centered>
+    <Modal show={show} onHide={onHide} size="lg" centered className="px-2">
       <Modal.Header closeButton>
         <Modal.Title>Online Application - {schoolName}</Modal.Title>
       </Modal.Header>
@@ -70,8 +70,8 @@ export default function OnlineApplicationForm({ show, onHide, schoolName }: Onli
           </Alert>
         ) : (
           <Form onSubmit={handleSubmit}>
-            <Row>
-              <Col md={6}>
+            <Row className="g-2 g-md-3">
+              <Col xs={12} md={6}>
                 <Form.Group className="mb-3">
                   <Form.Label>Student Name *</Form.Label>
                   <Form.Control
@@ -79,10 +79,11 @@ export default function OnlineApplicationForm({ show, onHide, schoolName }: Onli
                     required
                     value={formData.studentName}
                     onChange={(e) => handleChange('studentName', e.target.value)}
+                    style={{ minHeight: '44px' }}
                   />
                 </Form.Group>
               </Col>
-              <Col md={6}>
+              <Col xs={12} md={6}>
                 <Form.Group className="mb-3">
                   <Form.Label>Date of Birth *</Form.Label>
                   <Form.Control

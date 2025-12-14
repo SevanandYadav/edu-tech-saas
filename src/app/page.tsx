@@ -69,12 +69,12 @@ function HomeContent() {
           </div>
         </Container>
 
-        <Container>
+        <Container className="px-3">
           <Row className="justify-content-center">
-            <Col md={6} lg={4}>
+            <Col xs={12} sm={10} md={8} lg={6} xl={4}>
               <Card className="shadow-lg border-0">
-                <Card.Body className="p-4">
-                  <Card.Title className="h4 fw-bold text-center mb-4">
+                <Card.Body className="p-3 p-md-4">
+                  <Card.Title className="h5 h4-md fw-bold text-center mb-3 mb-md-4">
                     Access Your School Portal
                   </Card.Title>
                   
@@ -90,7 +90,8 @@ function HomeContent() {
                         <Dropdown.Toggle 
                           variant="primary" 
                           size="lg" 
-                          className="fw-semibold py-3"
+                          className="fw-semibold py-3 py-md-3 fs-6 fs-md-5"
+                          style={{ minHeight: '48px' }}
                         >
                           <i className="bi bi-building me-2"></i>
                           {t.selectSchool || 'Select School'}
@@ -103,7 +104,8 @@ function HomeContent() {
                             <Dropdown.Item 
                               key={school.id}
                               onClick={() => handleSchoolSelect(school.slug)}
-                              className="py-3"
+                              className="py-3 px-3"
+                              style={{ minHeight: '60px' }}
                             >
                               <div>
                                 <div className="fw-bold">{school.displayName}</div>
