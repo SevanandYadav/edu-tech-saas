@@ -1,0 +1,24 @@
+{
+  "mission": {
+    "title": "Our Mission",
+    "text": "To foster innovative learning environments that inspire creativity, critical thinking, and global citizenship while maintaining the highest standards of academic excellence."
+  },
+  "vision": {
+    "title": "Our Vision",
+    "text": "To be recognized as a premier educational institution that shapes confident, compassionate, and capable individuals ready to make a positive impact in the world."
+  },
+  "coreValues": [
+    "Innovation in Learning",
+    "Student-Centered Approach", 
+    "Cultural Diversity",
+    "Environmental Stewardship",
+    "Community Engagement",
+    "Lifelong Learning"
+  ],
+  "quickFacts": {
+    "established": "1992",
+    "students": "950+",
+    "teachers": "68",
+    "campusSize": "12 acres"
+  }
+}

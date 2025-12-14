@@ -1,0 +1,36 @@
+{
+  "academicYear": "2024-25",
+  "feeStructure": {
+    "tuitionFee": "₹45,000",
+    "developmentFee": "₹8,000",
+    "activityFee": "₹3,000", 
+    "libraryFee": "₹2,000",
+    "sportsFee": "₹2,500",
+    "totalAnnualFee": "₹60,500"
+  },
+  "paymentOptions": {
+    "annual": {
+      "title": "Annual: Full payment with 5% discount",
+      "amount": "₹57,475"
+    },
+    "quarterly": {
+      "title": "Quarterly: 4 installments", 
+      "amount": "₹15,125 per quarter"
+    },
+    "monthly": {
+      "title": "Monthly: 10 installments",
+      "amount": "₹6,050 per month"
+    }
+  },
+  "paymentMethods": [
+    "Online Payment (UPI, Cards)",
+    "Bank Transfer",
+    "Cheque/DD",
+    "Cash (at school office)"
+  ],
+  "importantDates": {
+    "feeDueDate": "10th of every month",
+    "lateFee": "₹500 after due date",
+    "annualDiscount": "5% for full payment"
+  }
+}

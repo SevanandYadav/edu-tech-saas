@@ -1,0 +1,52 @@
+{
+  "extracurricularActivities": [
+    {
+      "category": "Arts & Culture",
+      "activities": [
+        "Art & Craft Club",
+        "Music & Dance",
+        "Drama Society",
+        "Photography Club",
+        "Debate Society"
+      ]
+    },
+    {
+      "category": "Sports & Games", 
+      "activities": [
+        "Football & Cricket",
+        "Basketball",
+        "Swimming Pool",
+        "Table Tennis",
+        "Athletics Track"
+      ]
+    },
+    {
+      "category": "Academic Clubs",
+      "activities": [
+        "Science Club",
+        "Mathematics Olympiad", 
+        "Robotics Club",
+        "Computer Programming",
+        "Environmental Club"
+      ]
+    }
+  ],
+  "facilities": [
+    {
+      "name": "Modern Library",
+      "description": "Well-stocked library with digital resources"
+    },
+    {
+      "name": "Science Laboratories",
+      "description": "Fully equipped physics, chemistry, and biology labs"
+    },
+    {
+      "name": "Computer Lab", 
+      "description": "Latest computers with high-speed internet"
+    },
+    {
+      "name": "Sports Complex",
+      "description": "Indoor and outdoor sports facilities"
+    }
+  ]
+}

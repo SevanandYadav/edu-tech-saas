@@ -1,0 +1,33 @@
+{
+  "title": "Admission Process 2024-25",
+  "description": "Experience innovative education at Demo School - where creativity meets excellence.",
+  "requirements": [
+    "Online application form",
+    "Academic transcripts",
+    "Birth certificate copy",
+    "Recent photographs", 
+    "Character certificate"
+  ],
+  "importantDates": {
+    "applicationStart": "15th December 2023",
+    "applicationDeadline": "15th April 2024",
+    "admissionTest": "25th April 2024"
+  },
+  "quickActions": [
+    {
+      "title": "Apply Online",
+      "type": "primary", 
+      "link": "/online-admission"
+    },
+    {
+      "title": "Download Brochure",
+      "type": "outline-primary",
+      "link": "/brochure"
+    },
+    {
+      "title": "Schedule Visit",
+      "type": "outline-secondary",
+      "link": "/visit"
+    }
+  ]
+}

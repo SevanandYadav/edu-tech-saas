@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Best School Award",
+    "year": "2023",
+    "description": "Recognized as the best English medium school in the district",
+    "icon": "🏆"
+  },
+  {
+    "title": "Excellence in Science",
+    "year": "2023", 
+    "description": "State-level recognition for outstanding science education",
+    "icon": "🔬"
+  },
+  {
+    "title": "Sports Championship",
+    "year": "2022",
+    "description": "Inter-school sports competition winners",
+    "icon": "🥇"
+  },
+  {
+    "title": "Digital Innovation Award",
+    "year": "2022",
+    "description": "Recognition for innovative use of technology in education",
+    "icon": "💻"
+  },
+  {
+    "title": "Environmental Excellence",
+    "year": "2021",
+    "description": "Green school certification for sustainable practices", 
+    "icon": "🌱"
+  }
+]

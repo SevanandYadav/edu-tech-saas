@@ -1,0 +1,52 @@
+{
+  "extracurricularActivities": [
+    {
+      "category": "Creative Arts",
+      "activities": [
+        "Digital Art Studio",
+        "Music Production",
+        "Theater Workshop", 
+        "Creative Writing",
+        "Public Speaking"
+      ]
+    },
+    {
+      "category": "Sports & Fitness",
+      "activities": [
+        "Swimming Academy",
+        "Martial Arts",
+        "Yoga & Meditation",
+        "Badminton Club", 
+        "Cycling Team"
+      ]
+    },
+    {
+      "category": "STEM Clubs",
+      "activities": [
+        "Coding Club",
+        "Robotics Lab",
+        "Science Olympiad",
+        "Math Club",
+        "Innovation Lab"
+      ]
+    }
+  ],
+  "facilities": [
+    {
+      "name": "Innovation Center",
+      "description": "State-of-the-art maker space with 3D printing"
+    },
+    {
+      "name": "Digital Library", 
+      "description": "Extensive collection of e-books and online resources"
+    },
+    {
+      "name": "Smart Classrooms",
+      "description": "Interactive whiteboards and digital learning tools"
+    },
+    {
+      "name": "Wellness Center",
+      "description": "Fitness facilities and health monitoring"
+    }
+  ]
+}

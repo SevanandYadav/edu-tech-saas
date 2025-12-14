@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Innovation in Education Award",
+    "year": "2023",
+    "description": "State recognition for innovative teaching methodologies",
+    "icon": "🚀"
+  },
+  {
+    "title": "Green School Certification",
+    "year": "2023",
+    "description": "Eco-friendly practices and sustainability initiatives",
+    "icon": "🌿"
+  },
+  {
+    "title": "Cultural Excellence Award", 
+    "year": "2022",
+    "description": "Outstanding performance in arts and cultural activities",
+    "icon": "🎭"
+  },
+  {
+    "title": "Technology Integration Award",
+    "year": "2022", 
+    "description": "Excellence in digital learning and smart classrooms",
+    "icon": "📱"
+  },
+  {
+    "title": "Community Service Recognition",
+    "year": "2021",
+    "description": "Outstanding contribution to community development",
+    "icon": "🤝"
+  }
+]

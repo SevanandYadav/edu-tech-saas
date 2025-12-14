@@ -1,0 +1,24 @@
+{
+  "mission": {
+    "title": "Our Mission",
+    "text": "To provide quality education that nurtures young minds and prepares them for future challenges. We believe in holistic development of students through academic excellence and character building."
+  },
+  "vision": {
+    "title": "Our Vision", 
+    "text": "To be a leading educational institution that creates responsible global citizens and future leaders who contribute positively to society."
+  },
+  "coreValues": [
+    "Excellence in Education",
+    "Integrity and Honesty",
+    "Respect for Diversity",
+    "Innovation and Creativity", 
+    "Community Service",
+    "Environmental Responsibility"
+  ],
+  "quickFacts": {
+    "established": "1985",
+    "students": "1,200+",
+    "teachers": "85",
+    "campusSize": "15 acres"
+  }
+}

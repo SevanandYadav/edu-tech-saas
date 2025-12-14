@@ -1,0 +1,33 @@
+{
+  "title": "Admission Process 2024-25",
+  "description": "Join our prestigious institution and be part of excellence in education.",
+  "requirements": [
+    "Completed application form",
+    "Previous academic records",
+    "Birth certificate", 
+    "Passport size photographs",
+    "Transfer certificate (if applicable)"
+  ],
+  "importantDates": {
+    "applicationStart": "1st January 2024",
+    "applicationDeadline": "31st March 2024", 
+    "admissionTest": "15th April 2024"
+  },
+  "quickActions": [
+    {
+      "title": "Download Application",
+      "type": "primary",
+      "link": "/download-form"
+    },
+    {
+      "title": "Online Application", 
+      "type": "outline-primary",
+      "link": "/apply-online"
+    },
+    {
+      "title": "Contact Admission Office",
+      "type": "outline-secondary", 
+      "link": "/contact"
+    }
+  ]
+}
