@@ -3,7 +3,8 @@
 import { School } from '@/lib/schools';
 import { useState, useEffect } from 'react';
 import { Col, Card, Badge } from 'react-bootstrap';
-import { useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { loadSchoolNotifications, loadPrincipalMessage, PrincipalMessage } from '@/lib/contentLoader';
 import NewsSlideshow from './NewsSlideshow';
 
 interface DashboardSidebarProps {
@@ -13,44 +14,25 @@ interface DashboardSidebarProps {
 export default function DashboardSidebar({ school }: DashboardSidebarProps) {
   const { t } = useLanguage();
   const [readNotifications, setReadNotifications] = useState<Set<number>>(new Set());
+  const [notifications, setNotifications] = useState<string[]>([]);
+  const [principalMessage, setPrincipalMessage] = useState<PrincipalMessage | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const getSchoolContent = () => {
-    if (school?.slug === 'jj') {
-      return {
-        notifications: [
-          'Fee payment deadline extended to January 20th',
-          'Parent-Teacher meeting scheduled for January 25th',
-          'New computer lab inaugurated - classes start Monday',
-          'Republic Day celebration preparations underway',
-          'Science fair registration open till January 15th',
-          'Annual day rehearsals begin next week',
-          'Health checkup camp on January 30th',
-          'Merit scholarship applications now open'
-        ],
-        principalMessage: 'Dear students and parents, we are committed to providing quality education and creating a nurturing environment for all our students. Together, we will achieve excellence.',
-        principalName: 'Dr. Rajesh Patil, Principal'
-      };
-    } else if (school?.slug === 'demo') {
-      return {
-        notifications: [
-          'New sports complex now open for all students',
-          'Digital classroom training for teachers completed',
-          'Cultural fest 2024 registrations are now open',
-          'Career guidance session on January 22nd',
-          'Art competition winners announced - congratulations!',
-          'Swimming pool maintenance scheduled for weekend',
-          'Alumni meet preparations in progress',
-          'Health and wellness week starts February 1st'
-        ],
-        principalMessage: 'Welcome to our school community! We believe in holistic education that nurtures not just academic excellence but also creativity, character, and leadership skills.',
-        principalName: 'Mrs. Sunita Sharma, Principal'
-      };
+  useEffect(() => {
+    if (school?.slug) {
+      setLoading(true);
+      Promise.all([
+        loadSchoolNotifications(school.slug),
+        loadPrincipalMessage(school.slug)
+      ]).then(([schoolNotifications, schoolPrincipal]) => {
+        setNotifications(schoolNotifications);
+        setPrincipalMessage(schoolPrincipal);
+        setLoading(false);
+      });
     }
-    return { notifications: [], principalMessage: '', principalName: '' };
-  };
+  }, [school?.slug]);
 
-  const content = getSchoolContent();
-  const notifications = content.notifications;
+
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
@@ -80,7 +62,7 @@ export default function DashboardSidebar({ school }: DashboardSidebarProps) {
       <div className="mb-4">
         <h5 className="fw-bold text-dark mb-3">
           <span className="me-2">📰</span>
-          {t.latestNews}
+          {t.latestNews || 'Latest News'}
         </h5>
         <NewsSlideshow school={school} />
       </div>
@@ -88,43 +70,53 @@ export default function DashboardSidebar({ school }: DashboardSidebarProps) {
       <div className="mb-4">
         <h5 className="fw-bold text-dark mb-3">
           <span className="me-2">🔔</span>
-          {t.notifications}
+          {t.notifications || 'Notifications'}
           <Badge bg="danger" className="ms-2">{notifications.length - readNotifications.size}</Badge>
         </h5>
         
-        <div className="position-relative overflow-hidden" style={{ height: '300px' }}>
-          <div className="position-absolute w-100 notification-scroll">
-            {[...notifications, ...notifications].map((notification, index) => (
-              <Card 
-                key={index} 
-                className={`mb-2 border-0 ${readNotifications.has(index % notifications.length) ? 'bg-light opacity-75' : 'bg-white'}`}
-                style={{ cursor: 'pointer' }}
-                onClick={() => markAsRead(index % notifications.length)}
-              >
-                <Card.Body className="p-3" style={{ borderLeft: `3px solid ${readNotifications.has(index % notifications.length) ? '#6c757d' : school.primaryColor}` }}>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <Card.Text className="small mb-0">{notification}</Card.Text>
-                    {readNotifications.has(index % notifications.length) && <i className="bi bi-check text-success"></i>}
-                  </div>
-                </Card.Body>
-              </Card>
-            ))}
+        {loading ? (
+          <div className="text-center py-4">
+            <div className="spinner-border spinner-border-sm text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="position-relative overflow-hidden" style={{ height: '300px' }}>
+            <div className="position-absolute w-100 notification-scroll">
+              {[...notifications, ...notifications].map((notification, index) => (
+                <Card 
+                  key={index} 
+                  className={`mb-2 border-0 ${readNotifications.has(index % notifications.length) ? 'bg-light opacity-75' : 'bg-white'}`}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => markAsRead(index % notifications.length)}
+                >
+                  <Card.Body className="p-3" style={{ borderLeft: `3px solid ${readNotifications.has(index % notifications.length) ? '#6c757d' : school.primaryColor}` }}>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <Card.Text className="small mb-0">{notification}</Card.Text>
+                      {readNotifications.has(index % notifications.length) && <i className="bi bi-check text-success"></i>}
+                    </div>
+                  </Card.Body>
+                </Card>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
-      <Card className="border-warning bg-warning bg-opacity-10">
-        <Card.Body>
-          <Card.Title className="h6 fw-bold">
-            <span className="me-2">👨🏫</span>
-            {t.principalMessage}
-          </Card.Title>
-          <Card.Text className="small mb-3">
-            {content.principalMessage}
-          </Card.Text>
-          <small className="text-muted fw-medium">{content.principalName}</small>
-        </Card.Body>
-      </Card>
+      {principalMessage && (
+        <Card className="border-warning bg-warning bg-opacity-10">
+          <Card.Body>
+            <Card.Title className="h6 fw-bold">
+              <span className="me-2">👨🏫</span>
+              {t.principalMessage || 'Principal\'s Message'}
+            </Card.Title>
+            <Card.Text className="small mb-3">
+              {principalMessage.message}
+            </Card.Text>
+            <small className="text-muted fw-medium">{principalMessage.name}</small>
+          </Card.Body>
+        </Card>
+      )}
     </div>
   );
 }

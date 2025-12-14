@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Row, Col, Card, Carousel, Modal } from 'react-bootstrap';
-import { useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 
 interface Photo {
@@ -16,33 +16,54 @@ interface StudentLifePageProps {
   school?: any;
 }
 
+interface StudentLifeData {
+  extracurricularActivities: {
+    category: string;
+    activities: string[];
+  }[];
+  facilities: {
+    name: string;
+    description: string;
+  }[];
+}
+
 export default function StudentLifePage({ uploadedPhotos = [], school }: StudentLifePageProps) {
   const { t } = useLanguage();
-  
-  const getSchoolPhotos = () => {
-    if (school?.slug === 'jj') {
-      return [
-        { img: '/jj-english-medium-school/Interschool_Competition.png', title: 'Inter-School Competition', desc: 'Students participating in various competitions' },
-        { img: '/jj-english-medium-school/Science_Project.png', title: 'Science Project', desc: 'Innovative science projects and experiments' },
-        { img: '🎨', title: 'Art Exhibition', desc: 'Creative artwork displayed by talented students' },
-        { img: '🎭', title: 'Cultural Program', desc: 'Students performing in annual cultural festival' },
-        { img: '📚', title: 'Library Session', desc: 'Students engaged in reading and research activities' },
-        { img: '🌱', title: 'Environmental Day', desc: 'Tree plantation and environmental awareness activities' }
-      ];
-    } else if (school?.slug === 'demo') {
-      return [
-        { img: '🏆', title: 'Sports Day', desc: 'Annual sports competition and athletic events' },
-        { img: '🎪', title: 'Annual Function', desc: 'Grand celebration with performances and awards' },
-        { img: '🔬', title: 'Science Fair', desc: 'Students showcasing innovative science projects' },
-        { img: '🎵', title: 'Music Concert', desc: 'Musical performances by talented students' },
-        { img: '📖', title: 'Reading Club', desc: 'Promoting literacy and love for books' },
-        { img: '🌍', title: 'Earth Day', desc: 'Environmental awareness and green initiatives' }
-      ];
+  const [studentLifeData, setStudentLifeData] = useState<StudentLifeData | null>(null);
+  const [dataLoading, setDataLoading] = useState(true);
+
+  useEffect(() => {
+    if (school?.slug) {
+      fetch(`https://raw.githubusercontent.com/SevanandYadav/edu-tech-saas/data/data/schools/${school.slug}/content/student-life.json`)
+        .then(res => res.json())
+        .then(data => {
+          setStudentLifeData(data);
+          setDataLoading(false);
+        })
+        .catch(err => {
+          console.error('Failed to load student life data:', err);
+          setDataLoading(false);
+        });
     }
-    return [];
-  };
+  }, [school?.slug]);
   
-  const defaultPhotos = getSchoolPhotos();
+  const [defaultPhotos, setDefaultPhotos] = useState<Photo[]>([]);
+  const [photosLoading, setPhotosLoading] = useState(true);
+
+  useEffect(() => {
+    if (school?.slug) {
+      fetch(`https://raw.githubusercontent.com/SevanandYadav/edu-tech-saas/data/data/schools/${school.slug}/content/photos.json`)
+        .then(res => res.json())
+        .then(data => {
+          setDefaultPhotos(data);
+          setPhotosLoading(false);
+        })
+        .catch(err => {
+          console.error('Failed to load photos data:', err);
+          setPhotosLoading(false);
+        });
+    }
+  }, [school?.slug]);
 
   const [allPhotos, setAllPhotos] = useState(defaultPhotos);
   const [showModal, setShowModal] = useState(false);
@@ -67,10 +88,12 @@ export default function StudentLifePage({ uploadedPhotos = [], school }: Student
     setSelectedPhotoIndex(photos.findIndex(p => p === imagePhotos[newIndex]));
   };
 
-  // Load default photos only for static site
+  // Load default photos from data branch
   useEffect(() => {
-    setAllPhotos(defaultPhotos);
-  }, []);
+    if (!photosLoading) {
+      setAllPhotos(defaultPhotos);
+    }
+  }, [defaultPhotos, photosLoading]);
 
   useEffect(() => {
     if (uploadedPhotos.length > 0) {
@@ -86,14 +109,21 @@ export default function StudentLifePage({ uploadedPhotos = [], school }: Student
       <Card.Body className="p-2 p-md-4">
         <h3 className="fw-bold text-dark mb-4">
           <span className="me-2">🎓</span>
-          {t.studentLife}
+          {t.studentLife || 'Student Life'}
         </h3>
         
         <div className="mb-5">
           <h5 className="fw-bold text-dark mb-3">
             <span className="me-2">📷</span>
-            {t.lifeAtSchool}
+            {t.lifeAtSchool || 'Life at School'}
           </h5>
+          {photosLoading ? (
+            <div className="text-center py-4">
+              <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Loading photos...</span>
+              </div>
+            </div>
+          ) : photos.length > 0 ? (
           <div className="position-relative">
             <Carousel indicators={true} controls={false} interval={3000} activeIndex={activeIndex} onSelect={setActiveIndex}>
             {photos.map((photo, index) => (
@@ -177,58 +207,47 @@ export default function StudentLifePage({ uploadedPhotos = [], school }: Student
               ›
             </button>
           </div>
+          ) : (
+            <div className="text-center py-4">
+              <p className="text-muted">No photos available</p>
+            </div>
+          )}
         </div>
         
-        <Row>
-          <Col md={4} className="mb-4">
-            <Card className="h-100 border-primary">
-              <Card.Header className="bg-primary text-white">
-                <h6 className="mb-0">🎨 {t.extracurricularActivities}</h6>
-              </Card.Header>
-              <Card.Body>
-                <ul className="list-unstyled">
-                  <li>• {t.artCraft}</li>
-                  <li>• {t.musicDance}</li>
-                  <li>• {t.dramaSociety}</li>
-                  <li>• {t.photographyClub}</li>
-                  <li>• {t.debateSociety}</li>
-                </ul>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col md={4} className="mb-4">
-            <Card className="h-100 border-success">
-              <Card.Header className="bg-success text-white">
-                <h6 className="mb-0">⚽ {t.sportsGames}</h6>
-              </Card.Header>
-              <Card.Body>
-                <ul className="list-unstyled">
-                  <li>• {t.footballCricket}</li>
-                  <li>• {t.basketball}</li>
-                  <li>• {t.swimmingPool}</li>
-                  <li>• {t.tableTennis}</li>
-                  <li>• {t.athleticsTrack}</li>
-                </ul>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col md={4} className="mb-4">
-            <Card className="h-100 border-info">
-              <Card.Header className="bg-info text-white">
-                <h6 className="mb-0">🔬 {t.academicClubs}</h6>
-              </Card.Header>
-              <Card.Body>
-                <ul className="list-unstyled">
-                  <li>• {t.scienceClub}</li>
-                  <li>• {t.mathOlympiad}</li>
-                  <li>• {t.roboticsClub}</li>
-                  <li>• {t.computerProgramming}</li>
-                  <li>• {t.environmentalClub}</li>
-                </ul>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+        {dataLoading ? (
+          <div className="text-center py-4">
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading activities...</span>
+            </div>
+          </div>
+        ) : studentLifeData ? (
+          <Row>
+            {studentLifeData.extracurricularActivities.map((category, index) => {
+              const colors = ['primary', 'success', 'info'];
+              const icons = ['🎨', '⚽', '🔬'];
+              return (
+                <Col md={4} key={index} className="mb-4">
+                  <Card className={`h-100 border-${colors[index % colors.length]}`}>
+                    <Card.Header className={`bg-${colors[index % colors.length]} text-white`}>
+                      <h6 className="mb-0">{icons[index % icons.length]} {category.category}</h6>
+                    </Card.Header>
+                    <Card.Body>
+                      <ul className="list-unstyled">
+                        {category.activities.map((activity, actIndex) => (
+                          <li key={actIndex}>• {activity}</li>
+                        ))}
+                      </ul>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              );
+            })}
+          </Row>
+        ) : (
+          <div className="text-center py-4">
+            <p>Unable to load student life activities</p>
+          </div>
+        )}
       </Card.Body>
       
       <Modal show={showModal} onHide={() => setShowModal(false)} size="lg" centered>

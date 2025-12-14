@@ -11,6 +11,9 @@ export default function DemoSchoolPage() {
   useEffect(() => {
     loadSchoolData('demo').then(schoolData => {
       setSchool(schoolData);
+      if (schoolData) {
+        document.title = schoolData.displayName;
+      }
       setLoading(false);
     });
   }, []);

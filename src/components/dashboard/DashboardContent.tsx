@@ -19,13 +19,13 @@ export default function DashboardContent({ school, activeMenu, uploadedPhotos = 
     case 'home':
       return <HomePage school={school} />;
     case 'fees':
-      return <FeesPage />;
+      return <FeesPage school={school} />;
     case 'admission':
-      return <AdmissionPage />;
+      return <AdmissionPage school={school} />;
     case 'about':
       return <AboutPage school={school} />;
     case 'awards':
-      return <AwardsPage />;
+      return <AwardsPage school={school} />;
     case 'student-life':
       return <StudentLifePage uploadedPhotos={uploadedPhotos} school={school} />;
     default:

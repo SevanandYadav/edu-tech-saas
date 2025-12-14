@@ -11,6 +11,9 @@ export default function JJSchoolPage() {
   useEffect(() => {
     loadSchoolData('jj').then(schoolData => {
       setSchool(schoolData);
+      if (schoolData) {
+        document.title = schoolData.displayName;
+      }
       setLoading(false);
     });
   }, []);

@@ -12,7 +12,7 @@ function HomeContent() {
   const [schools, setSchools] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  const { language, changeLanguage, t } = useLanguage();
+  const { language, changeLanguage, t, loading: langLoading } = useLanguage();
 
   useEffect(() => {
     loadAllSchools().then(schoolData => {
@@ -73,7 +73,7 @@ function HomeContent() {
                   </Card.Title>
                   
                   <div className="text-center">
-                    {loading ? (
+                    {loading || langLoading ? (
                       <div className="text-center py-4">
                         <div className="spinner-border text-primary" role="status">
                           <span className="visually-hidden">Loading schools...</span>
@@ -87,7 +87,7 @@ function HomeContent() {
                           className="fw-semibold py-3"
                         >
                           <i className="bi bi-building me-2"></i>
-                          {t.selectSchool}
+                          {t.selectSchool || 'Select School'}
                         </Dropdown.Toggle>
                         <Dropdown.Menu className="w-100 shadow-lg">
                           <Dropdown.Header className="text-muted small fw-bold">

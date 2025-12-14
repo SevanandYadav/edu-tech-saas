@@ -2,48 +2,96 @@
 
 import { School } from '@/lib/schools';
 import { Row, Col, Card } from 'react-bootstrap';
-import { useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useState, useEffect } from 'react';
 
 interface AboutPageProps {
   school: School;
 }
 
+interface AboutData {
+  mission: { title: string; text: string };
+  vision: { title: string; text: string };
+  coreValues: string[];
+  quickFacts: {
+    established: string;
+    students: string;
+    teachers: string;
+    campusSize: string;
+  };
+}
+
 export default function AboutPage({ school }: AboutPageProps) {
   const { t } = useLanguage();
+  const [aboutData, setAboutData] = useState<AboutData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (school?.slug) {
+      fetch(`https://raw.githubusercontent.com/SevanandYadav/edu-tech-saas/data/data/schools/${school.slug}/content/about.json`)
+        .then(res => res.json())
+        .then(data => {
+          setAboutData(data);
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error('Failed to load about data:', err);
+          setLoading(false);
+        });
+    }
+  }, [school?.slug]);
+
+  if (loading) {
+    return (
+      <div className="text-center py-5">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading about...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!aboutData) {
+    return (
+      <div className="text-center py-5">
+        <h4>Unable to load about information</h4>
+      </div>
+    );
+  }
 
   return (
     <Card className="shadow-sm border-0">
       <Card.Body className="p-4">
         <h3 className="fw-bold text-dark mb-4">
           <span className="me-2">ℹ️</span>
-          {t.aboutUs} {school.displayName}
+          About {school.displayName}
         </h3>
         <Row>
           <Col md={8}>
-            <h5>{t.ourMission}</h5>
+            <h5>{aboutData.mission.title}</h5>
             <p className="text-muted mb-4">
-              {t.missionText}
+              {aboutData.mission.text}
             </p>
             
-            <h5>{t.ourVision}</h5>
+            <h5>{aboutData.vision.title}</h5>
             <p className="text-muted mb-4">
-              {t.visionText}
+              {aboutData.vision.text}
             </p>
             
-            <h5>{t.coreValues}</h5>
+            <h5>Core Values</h5>
             <Row>
               <Col md={6}>
                 <ul>
-                  <li>{t.excellenceEducation}</li>
-                  <li>{t.integrityHonesty}</li>
-                  <li>{t.respectDiversity}</li>
+                  {aboutData.coreValues.slice(0, Math.ceil(aboutData.coreValues.length / 2)).map((value, index) => (
+                    <li key={index}>{value}</li>
+                  ))}
                 </ul>
               </Col>
               <Col md={6}>
                 <ul>
-                  <li>{t.innovationCreativity}</li>
-                  <li>{t.communityService}</li>
-                  <li>{t.environmentalResponsibility}</li>
+                  {aboutData.coreValues.slice(Math.ceil(aboutData.coreValues.length / 2)).map((value, index) => (
+                    <li key={index}>{value}</li>
+                  ))}
                 </ul>
               </Col>
             </Row>
@@ -51,24 +99,24 @@ export default function AboutPage({ school }: AboutPageProps) {
           <Col md={4}>
             <Card className="border-warning">
               <Card.Header className="bg-warning">
-                <h6 className="mb-0">{t.quickFacts}</h6>
+                <h6 className="mb-0">Quick Facts</h6>
               </Card.Header>
               <Card.Body>
                 <div className="d-flex justify-content-between mb-2">
-                  <span>{t.established}</span>
-                  <strong>1995</strong>
+                  <span>Established:</span>
+                  <strong>{aboutData.quickFacts.established}</strong>
                 </div>
                 <div className="d-flex justify-content-between mb-2">
-                  <span>{t.students}</span>
-                  <strong>1,200+</strong>
+                  <span>Students:</span>
+                  <strong>{aboutData.quickFacts.students}</strong>
                 </div>
                 <div className="d-flex justify-content-between mb-2">
-                  <span>{t.teachers}</span>
-                  <strong>80+</strong>
+                  <span>Teachers:</span>
+                  <strong>{aboutData.quickFacts.teachers}</strong>
                 </div>
                 <div className="d-flex justify-content-between">
-                  <span>{t.campusSize}</span>
-                  <strong>5 Acres</strong>
+                  <span>Campus Size:</span>
+                  <strong>{aboutData.quickFacts.campusSize}</strong>
                 </div>
               </Card.Body>
             </Card>
