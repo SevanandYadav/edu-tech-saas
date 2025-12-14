@@ -17,17 +17,20 @@
     {
       "title": "Download Application",
       "type": "primary",
-      "link": "/download-form"
+      "action": "download",
+      "link": "https://raw.githubusercontent.com/SevanandYadav/edu-tech-saas/data/data/schools/jj/assets/documents/admission-form.pdf"
     },
     {
       "title": "Online Application", 
       "type": "outline-primary",
+      "action": "link",
       "link": "/apply-online"
     },
     {
       "title": "Contact Admission Office",
-      "type": "outline-secondary", 
-      "link": "/contact"
+      "type": "outline-secondary",
+      "action": "contact",
+      "link": "tel:+91-9876543210"
     }
   ]
 }

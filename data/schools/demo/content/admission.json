@@ -15,19 +15,22 @@
   },
   "quickActions": [
     {
+      "title": "Download Application",
+      "type": "primary",
+      "action": "download",
+      "link": "https://raw.githubusercontent.com/SevanandYadav/edu-tech-saas/data/data/schools/demo/assets/documents/admission-form.pdf"
+    },
+    {
       "title": "Apply Online",
-      "type": "primary", 
+      "type": "outline-primary", 
+      "action": "link",
       "link": "/online-admission"
     },
     {
-      "title": "Download Brochure",
-      "type": "outline-primary",
-      "link": "/brochure"
-    },
-    {
-      "title": "Schedule Visit",
+      "title": "Contact Admission Office",
       "type": "outline-secondary",
-      "link": "/visit"
+      "action": "contact",
+      "link": "tel:+91-9876543211"
     }
   ]
 }
