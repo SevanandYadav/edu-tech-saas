@@ -1,0 +1,20 @@
+{
+  "id": "demo-school-mumbai",
+  "name": "demo-school-mumbai", 
+  "slug": "demo",
+  "displayName": "Demo School",
+  "location": "Mumbai",
+  "primaryColor": "#059669",
+  "secondaryColor": "#047857",
+  "features": [
+    "Student Portal",
+    "Online Classes",
+    "Assignments", 
+    "Results"
+  ],
+  "contact": {
+    "email": "info@demoschool.edu",
+    "phone": "+91-22-87654321",
+    "address": "456 Learning Avenue, Mumbai, Maharashtra"
+  }
+}

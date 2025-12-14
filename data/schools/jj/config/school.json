@@ -1,0 +1,21 @@
+{
+  "id": "jj-english-medium-school-pune",
+  "name": "jj-english-medium-school-pune",
+  "slug": "jj",
+  "displayName": "J.J. English Medium School",
+  "location": "Pune",
+  "primaryColor": "#2563eb",
+  "secondaryColor": "#1e40af",
+  "features": [
+    "Student Portal",
+    "Online Classes", 
+    "Assignments",
+    "Results",
+    "Fee Management"
+  ],
+  "contact": {
+    "email": "info@jjschool.edu",
+    "phone": "+91-20-12345678",
+    "address": "123 Education Street, Pune, Maharashtra"
+  }
+}
