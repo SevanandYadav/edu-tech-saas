@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "date": "12 Jan 2024",
+    "title": "Digital Innovation Award",
+    "description": "Demo School wins recognition for innovative use of technology in education.",
+    "image": "/assets/digital-award.jpg",
+    "category": "achievement"
+  },
+  {
+    "id": 2,
+    "date": "09 Jan 2024",
+    "title": "New Library Wing Opens",
+    "description": "Expanded library with modern facilities and digital resources now available.",
+    "image": "/assets/library-wing.jpg", 
+    "category": "infrastructure"
+  },
+  {
+    "id": 3,
+    "date": "06 Jan 2024",
+    "title": "Environmental Excellence",
+    "description": "School receives green certification for sustainable practices.",
+    "image": "/assets/green-cert.jpg",
+    "category": "environment"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "date": "10 Jan 2024",
+    "title": "Academic Excellence Award 2024",
+    "description": "Our school receives state-level recognition for outstanding academic performance.",
+    "image": "/assets/academic-award.jpg",
+    "category": "achievement"
+  },
+  {
+    "id": 2,
+    "date": "08 Jan 2024", 
+    "title": "New Computer Lab Inauguration",
+    "description": "State-of-the-art computer lab with latest technology opens for students.",
+    "image": "/assets/computer-lab.jpg",
+    "category": "infrastructure"
+  },
+  {
+    "id": 3,
+    "date": "05 Jan 2024",
+    "title": "Inter-School Sports Victory", 
+    "description": "Our students win multiple medals in district-level sports competition.",
+    "image": "/assets/sports-victory.jpg",
+    "category": "sports"
+  }
+]
